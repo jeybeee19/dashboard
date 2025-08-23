@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #211438, #361f63);
+}
+h1 {
+  color: aliceblue;
+}
+.inputPage {
+  padding: 20px;
+  text-align: center; /* vertical center */
+  height: auto;
+}
+.formContainer {
+  background: linear-gradient(135deg, #8b65ce, #361f63);
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  height: auto;
+  margin-bottom: 50px;
+
+  padding: 20px;
+}
+.info {
+  border-radius: 8px;
+  height: 30px;
+  width: 50%;
+}
+button {
+  border-radius: 8px;
+}
+.add-btn {
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(135deg, #9062e0, #4e3188);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between icon and text */
+  transition: background 0.3s, transform 0.2s;
+}
+.add-btn:hover {
+  transform: scale(1.05); /* subtle grow effect */
+}
+/* Card container for 3D effect */
+.graphContainer {
+  margin-left: auto;
+  margin-right: auto;
+  height: 450px;
+  width: 700px;
+  border-radius: 8px;
+  perspective: 1000px; /* needed for 3D flip */
+}
+
+/* Card inside the container */
+.card {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* Flip the card */
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Front and back faces */
+.card .front,
+.card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+
+  color: whitesmoke;
+  font-size: 24px;
+}
+
+/* Front background */
+.card .front {
+  background: linear-gradient(135deg, #8b65ce, #361f63);
+}
+
+/* Back background */
+.card .back {
+  background: linear-gradient(135deg, #b19cd9, #7b5dc7);
+  transform: rotateY(180deg);
+}
+
+#modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+#modalContent {
+  background: white;
+  color: black;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 250px;
+}
+#modalContent button {
+  margin-top: 15px;
+  padding: 8px 15px;
+  border: none;
+  background: #9062e0;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .formContainer {
+    width: 90%; /* full width on mobile */
+    padding: 15px;
+  }
+  .info {
+    width: 80%; /* input wider on mobile */
+  }
+  .add-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  .graphContainer {
+    margin-bottom: 135px;
+    width: 95%;
+    height: 330px; /* smaller height on mobile */
+  }
+  .card .front,
+  .card .back {
+    font-size: 18px; /* smaller text on mobile */
+  }
+  h1 {
+    font-size: 22px;
+  }
+  #modalContent {
+    width: 80%; /* modal takes more screen on mobile */
+    padding: 15px;
+  }
+}
