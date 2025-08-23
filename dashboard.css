@@ -1,8 +1,22 @@
 body {
   margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: rgb(249, 235, 234);
 }
+h4 {
+  font-size: 18px; /* default desktop font */
+}
+p {
+  font-size: 14px;
+}
+
+h2 {
+  font-size: 36px;
+  font-family: "Georgia", serif;
+}
+
 .frontPage {
-  padding: 20px;
+  padding: 30px;
   height: 100vh;
 }
 .sidebar {
@@ -11,30 +25,169 @@ body {
 .aContainer {
   width: 150px;
   height: 40px;
-  background-color: rgb(248, 0, 0);
+  background-color: rgb(52, 152, 219);
   position: relative; /* parent for absolute children */
   display: flex;
   align-items: center;
   margin-bottom: 30px;
   border-radius: 8px;
 
-  margin-left: -130px; /* start hidden on the left */
+  margin-left: -140px; /* start hidden on the left */
   transition: transform 0.3s ease; /* smooth animation */
 }
 
 .sidebar a {
   width: 100%;
   height: 100%;
-  color: black;
+  color: rgb(255, 255, 255);
   text-decoration: none;
 
   display: flex; /* also flex inside <a> */
   justify-content: center;
   align-items: center;
 }
-.aContainer:hover {
-  transform: translateX(100px); /* move 20px to the right */
+.aContainer .text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* 👈 perfectly center text */
 }
-span {
-  right: 0;
+.aContainer i {
+  position: absolute;
+  right: 10px; /* lock icon to the right edge */
+}
+.aContainer:hover {
+  transform: translateX(100px); /* move 100px to the right */
+}
+.contents {
+  margin-left: 150px;
+}
+.result {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4 equal columns */
+  gap: 20px; /* space between columns */
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+}
+.log-Result {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+  background-color: rgb(52, 152, 219);
+  color: rgb(255, 255, 255);
+  padding: 1px;
+}
+
+.log-Button {
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.log-Buttons-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.log-Button button {
+  height: 50px;
+  border-radius: 8px;
+  cursor: pointer; /* shows a hand */
+  border: none;
+  background-color: rgb(52, 152, 219);
+  color: rgb(255, 255, 255);
+}
+.log-Button button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* shadow on all sides */
+  font-weight: bold;
+}
+.log-Buttons-container h4 {
+  margin: 0; /* remove default margin */
+}
+.chart-Container {
+  height: auto;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  height: auto;
+  color: aliceblue;
+  text-align: center;
+  position: relative;
+}
+.chart-Wrapper {
+  width: 100%;
+  height: 200px; /* or any height you want */
+  position: relative; /* required for Chart.js */
+}
+
+.pie-Chart,
+.line-Chart {
+  border-radius: 8px;
+  background-color: rgb(52, 152, 219);
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  p {
+    font-size: 12px;
+  }
+  h4 {
+    font-size: 14px; /* smaller text on tablet/mobile */
+  }
+
+  h2 {
+    font-size: 24px; /* smaller headings */
+  }
+  h3 {
+    font-size: 15px;
+  }
+  .sidebar {
+    width: 100px; /* smaller sidebar */
+  }
+
+  .aContainer {
+    width: 130px;
+    margin-left: -125px; /* 👈 remove negative margin */
+  }
+
+  .contents {
+    margin-left: 130px; /* push content just enough */
+  }
+  .aContainer .text {
+    position: absolute;
+    left: 50px;
+  }
+  .aContainer:hover {
+    transform: translateX(80px);
+  }
+  .result {
+    height: auto;
+    padding: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px; /* space between columns */
+  }
+  .log-Result {
+    height: 80px;
+  }
+  .log-Buttons-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .chart-Container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    height: 300px;
+  }
+  .pie-Chart,
+  .line-Chart {
+    width: 270px;
+  }
 }

@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="frontPage">
-      <h1>DASHBOARD</h1>
+      <h2>DASHBOARD</h2>
       <div class="sidebar">
         <div class="aContainer home">
           <a href="">
@@ -27,13 +27,62 @@
           ></a>
         </div>
         <div class="aContainer log-entry">
-          <a href=""> <span class="text">Log Entry</span></a>
+          <a href="">
+            <span class="text">Log Entry</span
+            ><i class="fa-solid fa-clipboard"></i
+          ></a>
         </div>
         <div class="aContainer history">
-          <a href=""> <span class="text">History</span></a>
+          <a href="">
+            <span class="text">History</span>
+            <i class="fa-solid fa-clock-rotate-left"></i
+          ></a>
         </div>
         <div class="aContainer settings">
-          <a href=""> <span class="text">Settings</span></a>
+          <a href="">
+            <span class="text">Settings</span> <i class="fa-solid fa-gear"></i
+          ></a>
+        </div>
+      </div>
+      <div class="contents">
+        <h2>Welcome Back!</h2>
+        <p>dasdasdasdasdasdajlsdfhkladsfjkuhasdjkl</p>
+        <div class="result">
+          <div class="log-Result">
+            <h4>average sleep</h4>
+            <h3>NONE</h3>
+          </div>
+          <div class="log-Result">
+            <h4>Most Frequent Mood</h4>
+            <h3>NONE</h3>
+          </div>
+          <div class="log-Result">
+            <h4>Total Entries</h4>
+            <h3>NONE</h3>
+          </div>
+        </div>
+        <br />
+        <div class="log-Button">
+          <h4>Log Your Day</h4>
+          <div class="log-Buttons-container">
+            <button><h4>Mood 😊</h4></button>
+            <button><h4>Task 📋</h4></button>
+            <button><h4>Sleep 🛏️</h4></button>
+          </div>
+        </div>
+        <br />
+        <div class="chart-Container">
+          <div class="pie-Chart">
+            <h3>Mood Overview</h3>
+            <br />
+            <div><canvas id="pie-Chart"></canvas></div>
+          </div>
+
+          <div class="line-Chart">
+            <h3>Your Trends</h3>
+            <br />
+            <div><canvas id="line-Chart"></canvas></div>
+          </div>
         </div>
       </div>
     </div>
