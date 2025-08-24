@@ -11,38 +11,38 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
-  <body>
+  <body class="">
     <div class="frontPage">
       <h2>DASHBOARD</h2>
       <div class="sidebar">
-        <div class="aContainer home">
-          <a href="">
-            <span class="text">Home</span> <i class="fa-solid fa-house"></i
-          ></a>
-        </div>
-        <div class="aContainer analytics">
-          <a href="">
+        <button class="aContainer home">
+          <div class="sidebar-Text">
+            <span class="text">Home</span> <i class="fa-solid fa-house"></i>
+          </div>
+        </button>
+        <button class="aContainer analytics">
+          <div class="sidebar-Text">
             <span class="text">Analytics</span>
-            <i class="fa-solid fa-chart-line"></i
-          ></a>
-        </div>
-        <div class="aContainer log-entry">
-          <a href="">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+        </button>
+        <button class="aContainer log-entry">
+          <div class="sidebar-Text">
             <span class="text">Log Entry</span
-            ><i class="fa-solid fa-clipboard"></i
-          ></a>
-        </div>
-        <div class="aContainer history">
-          <a href="">
+            ><i class="fa-solid fa-clipboard"></i>
+          </div>
+        </button>
+        <button class="aContainer history">
+          <div class="sidebar-Text">
             <span class="text">History</span>
-            <i class="fa-solid fa-clock-rotate-left"></i
-          ></a>
-        </div>
-        <div class="aContainer settings">
-          <a href="">
-            <span class="text">Settings</span> <i class="fa-solid fa-gear"></i
-          ></a>
-        </div>
+            <i class="fa-solid fa-clock-rotate-left"></i>
+          </div>
+        </button>
+        <button class="aContainer settings">
+          <div class="sidebar-Text">
+            <span class="text">Settings</span> <i class="fa-solid fa-gear"></i>
+          </div>
+        </button>
       </div>
       <div class="contents">
         <h2>Welcome Back!</h2>
@@ -54,7 +54,7 @@
           </div>
           <div class="log-Result">
             <h4>Most Frequent Mood</h4>
-            <h3>NONE</h3>
+            <h3 class="moodRes">NONE</h3>
           </div>
           <div class="log-Result">
             <h4>Total Entries</h4>
@@ -65,7 +65,35 @@
         <div class="log-Button">
           <h4>Log Your Day</h4>
           <div class="log-Buttons-container">
-            <button><h4>Mood 😊</h4></button>
+            <button class="moodLog" onclick="openMood()">
+              <h4>Mood 😊</h4>
+            </button>
+
+            <div class="mood-Modal">
+              <div class="mood-Content">
+                <div class="moodBtn-Container">
+                  <button class="mood-Btn" onclick="logMood('Happy')">
+                    😊Happy</button
+                  ><button class="mood-Btn" onclick="logMood('Sad')">
+                    😔Sad</button
+                  ><button class="mood-Btn" onclick="logMood('Angry')">
+                    😠Angry</button
+                  ><button class="mood-Btn" onclick="logMood('Calm')">
+                    😌Calm</button
+                  ><button class="mood-Btn" onclick="logMood('Anxious')">
+                    😬Anxious</button
+                  ><button class="mood-Btn" onclick="logMood('Excited')">
+                    🤩Excited
+                  </button>
+                </div>
+                <br />
+                <div class="del-Undo">
+                  <button onclick="reset()">Reset</button
+                  ><button onclick="undo()">Undo</button>
+                </div>
+                <button onclick="closeModal()" class="close">Close</button>
+              </div>
+            </div>
             <button><h4>Task 📋</h4></button>
             <button><h4>Sleep 🛏️</h4></button>
           </div>
@@ -75,13 +103,18 @@
           <div class="pie-Chart">
             <h3>Mood Overview</h3>
             <br />
-            <div><canvas id="pie-Chart"></canvas></div>
+            <div class="chart-Wrapper">
+              <canvas id="pie-Chart"></canvas>
+            </div>
           </div>
+          <br />
+          <div class="moodResult-Container"></div>
+          <br />
 
           <div class="line-Chart">
             <h3>Your Trends</h3>
             <br />
-            <div><canvas id="line-Chart"></canvas></div>
+            <div class="chart-Wrapper"><canvas id="line-Chart"></canvas></div>
           </div>
         </div>
       </div>

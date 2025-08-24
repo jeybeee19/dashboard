@@ -4,12 +4,11 @@ body {
   background-color: rgb(249, 235, 234);
 }
 h4 {
-  font-size: 18px; /* default desktop font */
+  font-size: 18px;
 }
 p {
   font-size: 14px;
 }
-
 h2 {
   font-size: 36px;
   font-family: "Georgia", serif;
@@ -26,46 +25,44 @@ h2 {
   width: 150px;
   height: 40px;
   background-color: rgb(52, 152, 219);
-  position: relative; /* parent for absolute children */
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 30px;
   border-radius: 8px;
-
-  margin-left: -140px; /* start hidden on the left */
-  transition: transform 0.3s ease; /* smooth animation */
+  margin-left: -140px;
+  transition: transform 0.3s ease;
 }
-
-.sidebar a {
+.sidebar .sidebar-Text {
   width: 100%;
   height: 100%;
-  color: rgb(255, 255, 255);
+  color: white;
   text-decoration: none;
-
-  display: flex; /* also flex inside <a> */
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 .aContainer .text {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%); /* 👈 perfectly center text */
+  transform: translateX(-50%);
 }
 .aContainer i {
   position: absolute;
-  right: 10px; /* lock icon to the right edge */
+  right: 10px;
 }
 .aContainer:hover {
-  transform: translateX(100px); /* move 100px to the right */
+  transform: translateX(100px);
 }
 .contents {
-  margin-left: 150px;
+  margin-left: 110px;
 }
+
 .result {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 4 equal columns */
-  gap: 20px; /* space between columns */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   padding: 10px;
   text-align: center;
   border-radius: 8px;
@@ -75,14 +72,12 @@ h2 {
   height: 150px;
   border-radius: 8px;
   background-color: rgb(52, 152, 219);
-  color: rgb(255, 255, 255);
+  color: white;
   padding: 1px;
 }
-
 .log-Button {
   padding: 10px;
   width: 100%;
-  height: auto;
   border-radius: 8px;
 }
 .log-Buttons-container {
@@ -90,46 +85,89 @@ h2 {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
+button {
+  border: none;
+  cursor: pointer;
+}
 .log-Button button {
   height: 50px;
   border-radius: 8px;
-  cursor: pointer; /* shows a hand */
-  border: none;
   background-color: rgb(52, 152, 219);
-  color: rgb(255, 255, 255);
+  color: white;
 }
 .log-Button button:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* shadow on all sides */
-  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .log-Buttons-container h4 {
-  margin: 0; /* remove default margin */
+  margin: 0;
 }
-.chart-Container {
-  height: auto;
-  width: 100%;
 
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  height: auto;
+.chart-Container {
+  width: 100%;
   color: aliceblue;
   text-align: center;
   position: relative;
 }
 .chart-Wrapper {
   width: 100%;
-  height: 200px; /* or any height you want */
-  position: relative; /* required for Chart.js */
+  height: 300px;
+  display: flex;
 }
-
 .pie-Chart,
 .line-Chart {
   border-radius: 8px;
   background-color: rgb(52, 152, 219);
   padding: 10px;
 }
-
+.mood-Modal {
+  z-index: 1;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+.mood-Content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 200px;
+  min-height: 200px;
+  text-align: center;
+}
+.moodBtn-Container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+}
+.moodBtn-Container button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.close {
+  width: 100px;
+}
+.moodResult-Container {
+  background-color: rgb(52, 152, 219);
+  height: 200px;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+.del-Undo {
+  margin-bottom: 10px;
+  display: flex; /* or grid */
+  justify-content: space-between; /* space between children */
+}
+.del-Undo button {
+  width: 50px;
+  border-radius: 50%;
+}
 @media (max-width: 768px) {
   body {
     padding: 10px;
@@ -138,56 +176,46 @@ h2 {
     font-size: 12px;
   }
   h4 {
-    font-size: 14px; /* smaller text on tablet/mobile */
+    font-size: 14px;
   }
-
   h2 {
-    font-size: 24px; /* smaller headings */
+    font-size: 24px;
   }
   h3 {
     font-size: 15px;
   }
   .sidebar {
-    width: 100px; /* smaller sidebar */
+    width: 100px;
   }
-
   .aContainer {
     width: 130px;
-    margin-left: -125px; /* 👈 remove negative margin */
+    margin-left: -125px;
   }
-
   .contents {
-    margin-left: 130px; /* push content just enough */
+    margin-left: 50px;
   }
   .aContainer .text {
-    position: absolute;
     left: 50px;
   }
   .aContainer:hover {
     transform: translateX(80px);
   }
   .result {
-    height: auto;
-    padding: 10px;
     grid-template-columns: repeat(1, 1fr);
-    gap: 10px; /* space between columns */
+    gap: 10px;
   }
   .log-Result {
     height: 80px;
   }
   .log-Buttons-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
   .chart-Container {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 10px;
     height: 300px;
   }
   .pie-Chart,
-  .line-Chart {
+  .line-Chart,
+  .moodResult-Container {
     width: 270px;
   }
 }
