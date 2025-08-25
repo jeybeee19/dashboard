@@ -427,3 +427,85 @@ button {
     max-width: 180px;
   }
 }
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 12px;
+  }
+
+  p {
+    font-size: 10px;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 60px;
+  }
+
+  .aContainer {
+    width: 90px;
+    height: 30px;
+    margin-left: -100px;
+  }
+
+  .aContainer .text {
+    left: 40px;
+    font-size: 10px;
+  }
+
+  .aContainer:hover {
+    transform: translateX(60px);
+  }
+
+  .contents {
+    margin-left: 35px;
+  }
+
+  /* Dashboard stacking */
+  .result {
+    grid-template-columns: 1fr; /* stack vertically */
+    gap: 8px;
+    width: 100%;
+  }
+
+  .log-Buttons-container {
+    grid-template-columns: 1fr; /* stack buttons vertically */
+    gap: 5px;
+  }
+
+  .tasks-Conatiner {
+    grid-template-columns: 1fr; /* stack tasks vertically */
+    padding: 5px;
+  }
+
+  .task-Content {
+    width: 90%;
+    height: auto;
+    margin: 10px auto;
+    padding: 15px;
+  }
+
+  /* Charts */
+  .chart-Wrapper canvas {
+    max-width: 150px;
+  }
+
+  .chart-Container {
+    width: 90%;
+  }
+
+  /* Buttons smaller */
+  button,
+  .log-Button button,
+  .moodBtn-Container button {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
