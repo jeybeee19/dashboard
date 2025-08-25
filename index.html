@@ -1,124 +1,237 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Defines document type as HTML5 -->
+<html lang="en"> <!-- Sets language to English -->
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DASHBOARD</title>
+    <meta charset="UTF-8" /> <!-- Character encoding (supports special characters) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Makes it responsive on mobile -->
+    <title>DASHBOARD</title> <!-- Title shown in browser tab -->
+
+    <!-- Import Chart.js for charts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Import your custom CSS -->
     <link rel="stylesheet" href="/dashboard.css" />
+
+    <!-- Import Font Awesome icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
-  <body class="">
+  <body>
+    <!-- Whole page wrapper -->
     <div class="frontPage">
-      <h2>DASHBOARD</h2>
+
+      <!-- Dashboard header -->
+      <h2 class="dashboard">DASHBOARD</h2>
+      
+      <!-- Sidebar navigation -->
       <div class="sidebar">
+        <!-- Home button -->
         <button class="aContainer home">
           <div class="sidebar-Text">
             <span class="text">Home</span> <i class="fa-solid fa-house"></i>
           </div>
         </button>
+
+        <!-- Analytics button -->
         <button class="aContainer analytics">
           <div class="sidebar-Text">
             <span class="text">Analytics</span>
             <i class="fa-solid fa-chart-line"></i>
           </div>
         </button>
-        <button class="aContainer log-entry">
+
+        <!-- Log Entry button -->
+        <button class="aContainer log-entry" id="logEntry">
           <div class="sidebar-Text">
-            <span class="text">Log Entry</span
-            ><i class="fa-solid fa-clipboard"></i>
+            <span class="text">Log Entry</span>
+            <i class="fa-solid fa-clipboard"></i>
           </div>
         </button>
-        <button class="aContainer history">
+
+        <!-- History button -->
+        <button class="aContainer history" onclick="openMood('history')">
           <div class="sidebar-Text">
             <span class="text">History</span>
             <i class="fa-solid fa-clock-rotate-left"></i>
           </div>
         </button>
-        <button class="aContainer settings">
-          <div class="sidebar-Text">
-            <span class="text">Settings</span> <i class="fa-solid fa-gear"></i>
-          </div>
-        </button>
       </div>
+     
+      <!-- Main content area -->
       <div class="contents">
         <h2>Welcome Back!</h2>
-        <p>dasdasdasdasdasdajlsdfhkladsfjkuhasdjkl</p>
-        <div class="result">
-          <div class="log-Result">
-            <h4>average sleep</h4>
-            <h3>NONE</h3>
+        <p>Here's your personal wellness overview</p>
+        
+        <!-- Dashboard stats (sleep, mood, entries) -->
+        <div class="center">
+          <div class="result">
+            <div class="log-Result">
+              <h4>Average Sleep</h4>
+              <h3 id="sleepAverage">NONE</h3>
+            </div>
+            <div class="log-Result">
+              <h4>Most Frequent Mood</h4>
+              <h3 class="moodRes">NONE</h3>
+            </div>
+            <div class="log-Result">
+              <h4>Total Entries</h4>
+              <h3 id="totalEntries">NONE</h3>
+            </div>
           </div>
-          <div class="log-Result">
-            <h4>Most Frequent Mood</h4>
-            <h3 class="moodRes">NONE</h3>
-          </div>
-          <div class="log-Result">
-            <h4>Total Entries</h4>
-            <h3>NONE</h3>
-          </div>
-        </div>
-        <br />
-        <div class="log-Button">
-          <h4>Log Your Day</h4>
-          <div class="log-Buttons-container">
-            <button class="moodLog" onclick="openMood()">
-              <h4>Mood 😊</h4>
-            </button>
 
-            <div class="mood-Modal">
-              <div class="mood-Content">
-                <div class="moodBtn-Container">
-                  <button class="mood-Btn" onclick="logMood('Happy')">
-                    😊Happy</button
-                  ><button class="mood-Btn" onclick="logMood('Sad')">
-                    😔Sad</button
-                  ><button class="mood-Btn" onclick="logMood('Angry')">
-                    😠Angry</button
-                  ><button class="mood-Btn" onclick="logMood('Calm')">
-                    😌Calm</button
-                  ><button class="mood-Btn" onclick="logMood('Anxious')">
-                    😬Anxious</button
-                  ><button class="mood-Btn" onclick="logMood('Excited')">
-                    🤩Excited
-                  </button>
+          <br />
+
+          <!-- Log your day buttons -->
+          <div class="log-Button">
+            <h4>Log Your Day</h4>
+            <div class="log-Buttons-container">
+
+              <!-- Mood log button -->
+              <button class="moodLog" onclick="openMood('mood')">
+                <h4>Mood 😊</h4>
+              </button>
+
+              <!-- Mood modal (popup) -->
+              <div class="mood-Modal">
+                <div class="mood-Content">
+                  <!-- Mood choices -->
+                  <div class="moodBtn-Container">
+                    <button class="mood-Btn" onclick="logMood('Happy')">😊Happy</button>
+                    <button class="mood-Btn" onclick="logMood('Sad')">😔Sad</button>
+                    <button class="mood-Btn" onclick="logMood('Angry')">😠Angry</button>
+                    <button class="mood-Btn" onclick="logMood('Calm')">😌Calm</button>
+                    <button class="mood-Btn" onclick="logMood('Anxious')">😬Anxious</button>
+                    <button class="mood-Btn" onclick="logMood('Excited')">🤩Excited</button>
+                  </div>
+
+                  <br />
+
+                  <!-- Reset & Undo buttons -->
+                  <div class="del-Undo">
+                    <button onclick="reset()">Reset</button>
+                    <button onclick="undo()">Undo</button>
+                  </div>
+                  <br>
+
+                  <!-- Close button -->
+                  <button onclick="closeModal('mood')" class="close">Close</button>
                 </div>
+              </div>
+
+              <!-- Task log button -->
+              <button onclick="openMood('task')" id="tasksBtn">
+                <h4>Task 📋</h4>
+              </button>
+
+              <!-- Sleep log button -->
+              <button id="sleepBtn"><h4>Sleep 🛏️</h4></button>
+
+              <!-- Sleep modal -->
+              <div class="sleep-Modal">
+                <div class="sleep-Content">
+                  <h3>Log Your Sleep</h3>
+                  <input type="number" id="sleepHours" placeholder="Hours slept" min="0" max="24">
+                  <br>
+                  <button id="addSleepBtn">Add</button>
+                  <button class="close" onclick="closeSleepModal()">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <br />
+
+          <!-- Mood chart -->
+          <div class="chart-Container">
+            <div class="moodResults">
+              <div class="pie-Chart">
+                <h3>Mood Overview</h3>
                 <br />
-                <div class="del-Undo">
-                  <button onclick="reset()">Reset</button
-                  ><button onclick="undo()">Undo</button>
+                <div class="chart-Wrapper">
+                  <canvas id="pie-Chart"></canvas> <!-- Pie chart canvas -->
                 </div>
-                <button onclick="closeModal()" class="close">Close</button>
+              </div>
+              <br />
+              <div class="moodResult-Container"></div>
+            </div>
+          
+            <br />
+
+            <!-- Tasks section -->
+            <div class="tasks-Conatiner">
+              <div clas="task-Prog" id="inComplete">
+                <h3>Incomplete</h3>
+                <div class="incompleteTask"></div>
+              </div>
+              <div clas="task-Prog" id="complete">
+                <h3>Complete</h3>
+                <div class="completeTask"></div>
               </div>
             </div>
-            <button><h4>Task 📋</h4></button>
-            <button><h4>Sleep 🛏️</h4></button>
-          </div>
-        </div>
-        <br />
-        <div class="chart-Container">
-          <div class="pie-Chart">
-            <h3>Mood Overview</h3>
+
+            <!-- Task modal -->
+            <div class="task-Modal">
+              <div class="task-Content">
+                <input type="text" id="noteInput" placeholder="Write your note here..."></input>
+                <button id="addBtn">Add Task</button>
+                <br /><br />
+                <button onclick="closeModal('task')" class="close">Close</button>
+              </div>
+            </div>
+
             <br />
-            <div class="chart-Wrapper">
-              <canvas id="pie-Chart"></canvas>
+
+            <!-- Line chart for trends -->
+            <div class="line-Chart">
+              <h3>Your Trends</h3>
+              <br />
+              <div class="sleepChart">
+                <canvas id="line-Chart"></canvas> <!-- Line chart canvas -->
+              </div>
+            </div>
+            <br>
+          </div>
+
+          <!-- History modal -->
+          <div class="history-Modal">
+            <div class="history-Content">
+              <h2>History</h2>
+
+              <!-- Mood history -->
+              <div class="moodHistory-Container">
+                <h3>Mood History</h3>
+                <div class="moodHistory"></div>
+              </div>
+              <br />
+
+              <!-- Task history -->
+              <div class="taskHistory-Container">
+                <h3>Task History</h3>
+                <div class="taskHistory"></div>
+              </div>
+              <br />
+
+              <!-- Sleep history -->
+              <div class="sleepHistory-Container">
+                <h3>Sleep History</h3>
+                <div class="sleepHistory"></div>
+              </div>
+              <br />
+
+              <!-- Close button -->
+              <button class="close" onclick="closeModal('history')">Close</button>
             </div>
           </div>
-          <br />
-          <div class="moodResult-Container"></div>
-          <br />
 
-          <div class="line-Chart">
-            <h3>Your Trends</h3>
-            <br />
-            <div class="chart-Wrapper"><canvas id="line-Chart"></canvas></div>
-          </div>
         </div>
       </div>
     </div>
+
+    <!-- External JavaScript files -->
+    <script src="sidebar.js"></script>
+    <script src="/tasks.js"></script>
     <script src="/dashboard.js"></script>
   </body>
 </html>
